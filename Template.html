@@ -16,18 +16,26 @@
         <p>아래 버튼을 눌러 게임을 플레이하세요.</p> -->
         <a href="game1-play.html" class="button">게임 실행</a>
     </section>
+    
     <section class="game-screenshots">
         <h2>스크린샷</h2>
         <div class="screenshot-container">
             <button class="prev-button" onclick="scrollScreenshots(-1)">&#10094;</button>
             <div class="screenshot-wrapper">
-                <img src="1.png" class="screenshot" alt="스크린샷 1">
-                <img src="2.png" class="screenshot" alt="스크린샷 2">
-                <img src="3.png" class="screenshot" alt="스크린샷 3">
+                <img src="1.png"onclick="openLightbox(0)" class="screenshot" alt="스크린샷 1">
+                <img src="2.png"onclick="openLightbox(1)" class="screenshot" alt="스크린샷 2">
+                <img src="3.png"onclick="openLightbox(2)" class="screenshot" alt="스크린샷 3">
             </div>
             <button class="next-button" onclick="scrollScreenshots(1)">&#10095;</button>
         </div>
     </section>
+    <div class="lightbox" id="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+        <img id="lightbox-img" src="">
+        <span class="next" onclick="changeImage(1)">&#10095;</span>
+    </div>
+
     <section class="game-info">
         <h2>게임 소개</h2>
         <p>게임 1은 [게임 장르]로, [특징]을 가지고 있습니다. 개발자는 [개발자 이름]이며, 개발 과정에서 다양한 시도를 거쳤습니다.</p>
@@ -47,6 +55,29 @@
     <button class="button" onclick="location.href='../index.html'">메인 페이지로 돌아가기</button>
     
     <script>
+        // 바꿔야 하는 것들
+        let images = ["1.png", "2.png", "3.png", "4.png"];
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            document.getElementById("lightbox-img").src = images[currentIndex];
+            document.getElementById("lightbox").style.display = "flex";
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            } else if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            document.getElementById("lightbox-img").src = images[currentIndex];
+        }
         function scrollScreenshots(direction) {
             const wrapper = document.querySelector(".screenshot-wrapper");
             wrapper.scrollBy({ left: direction * 300, behavior: "smooth" });
