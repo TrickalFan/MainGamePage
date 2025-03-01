@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            background-color: #f4f4f4;
+
+            justify-content: center;
+        }
+        .sidebar {
+            width: 200px;
+            background: #333;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            border-radius: 10px;
+            left: 0;
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            background: #777;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .sidebar a:hover {
+            background: #333;
+        }
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+            flex-grow: 1;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .header-title {
+            font-size: 24px;
+            color: #333;
+            font-weight: bold;
+        }
+        .info-box {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .separator {
+            border-top: 2px solid #888;
+            margin: 20px 0;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .grid-item {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .info-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        .info-item {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <a href="#" onclick="showSection('profile')">프로필</a>
+        <a href="#" onclick="showSection('info')">교주의 기록</a>
+        <!-- <a href="#" onclick="showSection('projects')">프로젝트</a> -->
+        <a href="#contact" onclick="showSection('contact')">연락처</a>
+        <a href="index.html">메인 페이지로 돌아가기</a>
+    </nav>
+    
+    <div class="content">
+        <section id="profile" class="section active">
+            <h2 class="header-title">"집에 가고 싶어요"</h2>
+            <div class="info-box">
+                <p>어딘가의 노예로 갇혀있는 교주.<br>
+                    힘든 생활을 이겨내게 해준 트릭컬에 반해서 팬 게임을 취미로 만들고있다.
+                </p>
+                <h3 style="display: flex; align-items: center; justify-content: center;">TMI <span style="border-bottom: 2px solid #888; flex-grow: 1; margin-left: 10px;"></span></h3>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <h3>교주 정보</h3>
+                        <p>전투력 : 4109만<br>
+                            우리 교단의 자랑 : 시온 <br>
+                            트릭컬 시작일 : 2023년 9월 27일<br>
+                        소모한 황크 : 778개<br>
+                        줘팸터 현재(최고) 순위 : ~80위(1위)<br>
+                        프론티어, 차원 대충돌 순위 : ~2000위<br>
+                    </p>
+                    </div>
+                    <div class="grid-item">
+                        <h3>좋아하는 사도</h3>
+                        <p>순수- 비비 캬롯<br>
+                            냉정- 아야 피코라<br>
+                            광기- 클로에 리뉴아 림(혼돈)<br>
+                            활발- 에피카 우이 버터 크레페<br>
+                            우울- 시온 죠안 리온 림 키디언 블랑셰 리스티 에슈르 힐데 포셔 실피르</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <h3>좋아하는 것</h3>
+                        <p>컴퓨터, 진보된 문물들</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3>싫어하는 것</h3>
+                        <p>2달 전에 호기심에 샀다가 먹지도 못하고 내 눈을 노려보고있는 99% 카카오 초콜릿</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3>취미</h3>
+                        <p>유니티 개발, 서브컬처 게임, 유튜브 감상, 스팀 게임들, TRPG</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3>소원</h3>
+                        <p>개발자 버터가 되기, TRPG 던전앤 드래곤즈의 Chaos Bolt의 부활</p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    
+        <section id="info" class="section">
+            <h2 class="header-title">교주의 기록</h2>
+            <div class="info-box">
+                <div class="info-container">
+                    
+                    <div class="info-item">
+                        <p>실수로 추천 상점에서 상급 크레파스를 엘리프 주고 사서 빡쳐서 1달동안 접었다고 한다.
+                            접은동안 테마극장 "빛나는 모든 것이 금은 아니라도"를 놓치고, 키디언의 움직이는 프로필을 구매하지 못해서 빡쳐서 2주 더 접었다고 한다.
+                        </p>
+                    </div>
+                    <div class="info-item">
+                        <p>
+                            오픈때부터 했지만 아직도 메인스토리는 1시즌 4챕터까지밖에 못봤다고 한다.
+                            교주가 더빙도 없는데 말이랑 선택지가 너무 많아서 생각 없이 보기 힘들어서라는 이유다.
+                        </p>
+                    </div>
+                    <div class="info-item">
+                        <p>팬게임 저작권 관련해서 문의 이메일을 6번 보내니 더이상 답변을 못받는다고 한다. 
+                            본의 아니게 진상짓을 해서 죄송한 마음이 크다고 한다.
+                        </p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <p>친밀 레벨 12에 오픈</p>
+                    </div>
+                    <div class="info-item">
+                        <p>친밀 레벨 15에 오픈</p>
+                    </div>
+                    <div class="info-item">
+                        <p>친밀 레벨 18에 오픈</p>
+                    </div>
+                    <div class="info-item">
+                        <p>친밀 레벨 21에 오픈</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section id="contact" class="section">
+            <h2 class="header-title">연락처</h2>
+            <div class="info-box">
+                <p>Email : u235_p239@naver.com</p>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+            showSection(hash);
+        }
+    });
+    </script>
+    
+</body>
+</html>
