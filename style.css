@@ -93,3 +93,35 @@ header {
 .button:hover {
     background-color: #ffd700;
 }
+.screenshot-container {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.screenshot-wrapper {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    width: 100%;
+}
+.screenshot {
+    height: 200px;
+    width: auto;
+    flex-shrink: 0;
+}
+.prev-button, .next-button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.prev-button:hover, .next-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}

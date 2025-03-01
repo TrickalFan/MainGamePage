@@ -4,17 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게임 1 정보</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <header>
         <h1>게임 1</h1>
-        <p>이 게임에 대한 소개, 개발 배경 및 기타 정보를 확인하세요.</p>
+        <!-- <p>이 게임에 대한 소개, 개발 배경 및 기타 정보를 확인하세요.</p> -->
     </header>
     <section class="play-game">
         <!-- <h2>게임 실행</h2>
         <p>아래 버튼을 눌러 게임을 플레이하세요.</p> -->
         <a href="game1-play.html" class="button">게임 실행</a>
+    </section>
+    <section class="game-screenshots">
+        <h2>스크린샷</h2>
+        <div class="screenshot-container">
+            <button class="prev-button" onclick="scrollScreenshots(-1)">&#10094;</button>
+            <div class="screenshot-wrapper">
+                <img src="1.png" class="screenshot" alt="스크린샷 1">
+                <img src="2.png" class="screenshot" alt="스크린샷 2">
+                <img src="3.png" class="screenshot" alt="스크린샷 3">
+            </div>
+            <button class="next-button" onclick="scrollScreenshots(1)">&#10095;</button>
+        </div>
     </section>
     <section class="game-info">
         <h2>게임 소개</h2>
@@ -32,7 +44,13 @@
     </section>
     
 
+    <button class="button" onclick="location.href='../index.html'">메인 페이지로 돌아가기</button>
     
-    <button class="button" onclick="location.href='index.html'">메인 페이지로 돌아가기</button>
+    <script>
+        function scrollScreenshots(direction) {
+            const wrapper = document.querySelector(".screenshot-wrapper");
+            wrapper.scrollBy({ left: direction * 300, behavior: "smooth" });
+        }
+    </script>
 </body>
 </html>

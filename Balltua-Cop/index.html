@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>볼추아캅</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>볼추아캅</h1>
+    </header>
+    <!-- <section class="play-game">
+        <h2>게임 실행</h2>
+        <p>아래 버튼을 눌러 게임을 플레이하세요.</p>
+        <a href="game1-play.html" class="button">게임 실행</a>
+    </section> -->
+    <section class="game-info">
+        <h2>게임 소개</h2>
+        <p>트릭컬 리바이브 사전예약 pv영상 04호에 나오는 게임입니다. 사용한 스파인, 음악, 보이스, 효과음의 저작권을 위반하여 주말농장 갔습니다.</p>
+    </section>
+
+    <section class="game-screenshots">
+        <h2>스크린샷</h2>
+        <div class="screenshot-container">
+            <button class="prev-button" onclick="scrollScreenshots(-1)">&#10094;</button>
+            <div class="screenshot-wrapper">
+                <img src="1.png" class="screenshot" alt="스크린샷 1">
+                <img src="2.png" class="screenshot" alt="스크린샷 2">
+                <img src="3.png" class="screenshot" alt="스크린샷 3">
+            </div>
+            <button class="next-button" onclick="scrollScreenshots(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section class="game-details">
+        <h2>개발 배경</h2>
+        <p>첫 트릭컬 팬게임 프로젝트였고, 트릭컬 리바이브 사전예약 pv영상 04호에 나오는 게임을 직접 플레이 하고싶어서 제작했었습니다.</p>
+    </section>
+<!--     
+    <section class="copyright">
+        <h2>저작권 정보</h2>
+        <p>이 게임의 모든 콘텐츠(그래픽, 음악, 코드)는 [개발자 또는 팀 이름]의 소유입니다. 무단 복제 및 배포를 금합니다.</p>
+    </section> -->
+    <button class="button" onclick="location.href='../index.html'">메인 페이지로 돌아가기</button>
+    
+    <script>
+        function scrollScreenshots(direction) {
+            const wrapper = document.querySelector(".screenshot-wrapper");
+            wrapper.scrollBy({ left: direction * 300, behavior: "smooth" });
+        }
+    </script>
+</body>
+</html>

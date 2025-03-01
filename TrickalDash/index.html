@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트릭컬대쉬</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>트릭컬대쉬</h1>
+        <!-- <p>이 게임에 대한 소개, 개발 배경 및 기타 정보를 확인하세요.</p> -->
+    </header>
+    <section class="game-screenshots">
+        <h2>스크린샷</h2>
+        <div class="screenshot-container">
+            <button class="prev-button" onclick="scrollScreenshots(-1)">&#10094;</button>
+            <div class="screenshot-wrapper">
+                <img src="1.png" class="screenshot" alt="스크린샷 1">
+            </div>
+            <button class="next-button" onclick="scrollScreenshots(1)">&#10095;</button>
+        </div>
+    </section>
+    <section class="game-info">
+        <h2>게임 소개</h2>
+        <p>페스타를 조종해 2열로 나오는 몬스터들을 리듬에 맞춰 격파하는 게임입니다.<br>
+            계획한 스파인, 음악, 보이스, 효과음의 저작권을 받지 못해서 계획 단계에서 주말농장 갔습니다.</p>
+    </section>
+    
+    <section class="game-details">
+        <h2>개발 배경</h2>
+        <p>리듬게임 뮤즈대쉬의 패러디 게임입니다.<br>
+             트릭컬의 맛있는 음악들을 리듬게임으로 만들어 보고 싶었고, 2D 행스크롤 게임임에 아이디어를 얻어 뮤즈대쉬를 패러디 했습니다.</p>
+    </section>
+
+
+    <button class="button" onclick="location.href='../index.html'">메인 페이지로 돌아가기</button>
+    
+    <script>
+        function scrollScreenshots(direction) {
+            const wrapper = document.querySelector(".screenshot-wrapper");
+            wrapper.scrollBy({ left: direction * 300, behavior: "smooth" });
+        }
+    </script>
+</body>
+</html>

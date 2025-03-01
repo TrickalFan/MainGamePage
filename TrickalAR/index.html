@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트릭컬AR</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>트릭컬AR</h1>
+    </header>
+    <section class="game-screenshots">
+        <h2>스크린샷</h2>
+        <div class="screenshot-container">
+            <button class="prev-button" onclick="scrollScreenshots(-1)">&#10094;</button>
+            <div class="screenshot-wrapper">
+                <img src="1.png" class="screenshot" alt="스크린샷 1">
+                <img src="2.png" class="screenshot" alt="스크린샷 2">
+                <img src="3.png" class="screenshot" alt="스크린샷 3">
+            </div>
+            <button class="next-button" onclick="scrollScreenshots(1)">&#10095;</button>
+        </div>
+    </section>
+    <section class="game-info">
+        <h2>게임 소개</h2>
+        <p>트릭컬 트럼프 카드를 Vuforia엔진으로 인식해 그 위에 사도들의 Spine을 불러오는 앱입니다.<br>
+            클릭하여 사도를 선택하고 이동 가능하며, 볼 당기기와 쓰다듬기 기능이 구현되어있습니다.<br>
+            사도들의 Spine, 배경음악, 음성, 효과음의 저작권을 위반하여 주말농장 갔습니다.
+        </p>
+    </section>
+    
+    <section class="game-details">
+        <h2>개발 배경</h2>
+        <p>AR앱 개발을 해보고싶어서 지면을 인식해 사도를 불러오는 앱을 개발하고 있었는데 <br>
+             트럼프 카드와 연동하면 좋을것같다는 지인의 아이디어를 받고 Vuforia로 이미지 인식 엔진을 사용해 만들었습니다.</p>
+    </section>
+    
+
+    <button class="button" onclick="location.href='../index.html'">메인 페이지로 돌아가기</button>
+    
+    <script>
+        function scrollScreenshots(direction) {
+            const wrapper = document.querySelector(".screenshot-wrapper");
+            wrapper.scrollBy({ left: direction * 300, behavior: "smooth" });
+        }
+    </script>
+</body>
+</html>
