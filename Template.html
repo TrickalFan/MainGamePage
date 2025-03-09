@@ -17,23 +17,30 @@
         <a href="game1-play.html" class="button">게임 실행</a>
     </section>
     
+    
     <section class="game-screenshots">
         <h2>스크린샷</h2>
         <div class="screenshot-container">
             <button class="prev-button" onclick="scrollScreenshots(-1)">&#10094;</button>
             <div class="screenshot-wrapper">
-                <img src="1.png"onclick="openLightbox(0)" class="screenshot" alt="스크린샷 1">
-                <img src="2.png"onclick="openLightbox(1)" class="screenshot" alt="스크린샷 2">
-                <img src="3.png"onclick="openLightbox(2)" class="screenshot" alt="스크린샷 3">
+                <img src="1.png" onclick="openLightbox(0, 'image')" class="screenshot" alt="스크린샷 1">
+                <img src="2.png" onclick="openLightbox(1, 'image')" class="screenshot" alt="스크린샷 2">
+                <img src="3.png" onclick="openLightbox(2, 'image')" class="screenshot" alt="스크린샷 3">
+                <img src="4.png" onclick="openLightbox(3, 'image')" class="screenshot" alt="스크린샷 4">
+                <!-- 유튜브 동영상 썸네일 -->
+                <img src="https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg" onclick="openLightbox(0, 'video')" class="screenshot" alt="게임 플레이 영상">
             </div>
             <button class="next-button" onclick="scrollScreenshots(1)">&#10095;</button>
         </div>
     </section>
     <div class="lightbox" id="lightbox">
         <span class="close" onclick="closeLightbox()">&times;</span>
-        <span class="prev" onclick="changeImage(-1)">&#10094;</span>
-        <img id="lightbox-img" src="">
-        <span class="next" onclick="changeImage(1)">&#10095;</span>
+        <span class="prev" onclick="changeMedia(-1)">&#10094;</span>
+        <div id="lightbox-content">
+            <img id="lightbox-img" src="" style="display: none;">
+            <iframe id="lightbox-video" width="560" height="315" src="" frameborder="0" allowfullscreen style="display: none;"></iframe>
+        </div>
+        <span class="next" onclick="changeMedia(1)">&#10095;</span>
     </div>
 
     <section class="game-info">
@@ -54,29 +61,43 @@
 
     <button class="button" onclick="location.href='../index.html'">메인 페이지로 돌아가기</button>
     
-    <script>
-        // 바꿔야 하는 것들
-        let images = ["1.png", "2.png", "3.png", "4.png"];
-        let currentIndex = 0;
 
-        function openLightbox(index) {
+    <script>
+        let images = ["1.png", "2.png", "3.png", "4.png"];
+        let videos = ["https://www.youtube.com/embed/YOUR_VIDEO_ID"];
+        let currentIndex = 0;
+        
+        function openLightbox(index, type) {
             currentIndex = index;
-            document.getElementById("lightbox-img").src = images[currentIndex];
+            mediaType = type;
+
+            if (type === "image") {
+                document.getElementById("lightbox-img").src = images[currentIndex];
+                document.getElementById("lightbox-img").style.display = "block";
+                document.getElementById("lightbox-video").style.display = "none";
+            } else if (type === "video") {
+                document.getElementById("lightbox-video").src = videos[0] + "?autoplay=1";
+                document.getElementById("lightbox-video").style.display = "block";
+                document.getElementById("lightbox-img").style.display = "none";
+            }
             document.getElementById("lightbox").style.display = "flex";
         }
-
+        
         function closeLightbox() {
             document.getElementById("lightbox").style.display = "none";
+            document.getElementById("lightbox-video").src = ""; // 영상 멈추기
         }
-
-        function changeImage(direction) {
-            currentIndex += direction;
-            if (currentIndex < 0) {
-                currentIndex = images.length - 1;
-            } else if (currentIndex >= images.length) {
-                currentIndex = 0;
+        
+        function changeMedia(direction) {
+            if (mediaType === "image") {
+                currentIndex += direction;
+                if (currentIndex < 0) {
+                    currentIndex = images.length - 1;
+                } else if (currentIndex >= images.length) {
+                    currentIndex = 0;
+                }
+                document.getElementById("lightbox-img").src = images[currentIndex];
             }
-            document.getElementById("lightbox-img").src = images[currentIndex];
         }
         function scrollScreenshots(direction) {
             const wrapper = document.querySelector(".screenshot-wrapper");
