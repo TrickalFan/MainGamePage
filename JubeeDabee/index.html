@@ -22,8 +22,8 @@
             <button class="prev-button" onclick="scrollScreenshots(-1)">&#10094;</button>
             <div class="screenshot-wrapper">
                 <img src="1.png"onclick="openLightbox(0)" class="screenshot" alt="스크린샷 1">
-                <!-- <img src="2.png"onclick="openLightbox(1)" class="screenshot" alt="스크린샷 2">
-                <img src="3.png"onclick="openLightbox(2)" class="screenshot" alt="스크린샷 3"> -->
+                <img src="2.png"onclick="openLightbox(1)" class="screenshot" alt="스크린샷 2">
+                <img src="3.png"onclick="openLightbox(2)" class="screenshot" alt="스크린샷 3">
             </div>
             <button class="next-button" onclick="scrollScreenshots(1)">&#10095;</button>
         </div>
@@ -37,7 +37,9 @@
     <section class="game-info">
         <h2>게임 소개</h2>
         <p>쥬비다비는 Count Master을 패러디한 게임입니다.<br>
-             쥬비들을 위 아래로 움직여 최대한 많은 쥬비를 만들어 적을 물리쳐야합니다.</p>
+             쥬비들을 위 아래로 움직여 최대한 많은 쥬비를 만들어 적을 물리쳐야합니다.<br>
+             최대 렌더링되는 쥬비는 150마리로 부하를 줄였습니다.<br>
+             List로 적에게 주는 데미지를 측정해 기존에 한 프레임에 여러 쥬비가 닿으면 데미지가 한번만 계산되는 문제를 개선했습니다.</p>
     </section>
     
     <section class="game-details">
@@ -61,7 +63,7 @@
     
     <script>
         // 바꿔야 하는 것들
-        let images = ["1.png"];
+        let images = ["1.png","2.png","3.png"];
         let currentIndex = 0;
 
         function openLightbox(index) {
