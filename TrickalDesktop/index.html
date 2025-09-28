@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트릭컬데스크탑</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>트릭컬데스크탑</h1>
+        <!-- <p>이 게임에 대한 소개, 개발 배경 및 기타 정보를 확인하세요.</p> -->
+    </header>
+    <section class="game-screenshots">
+        <h2>스크린샷</h2>
+        <div class="screenshot-container">
+            <button class="prev-button" onclick="scrollScreenshots(-1)">&#10094;</button>
+            <div class="screenshot-wrapper">
+                <img src="1.png" class="screenshot" alt="스크린샷 1">
+            </div>
+            <button class="next-button" onclick="scrollScreenshots(1)">&#10095;</button>
+        </div>
+    </section>
+    <section class="game-info">
+        <h2>게임 소개</h2>
+        <p>고전 게임 바탕화면 키우기처럼, 트릭컬 캐릭터를 화면에 불러와 상호작용하는 게임입니다.<br>
+            바탕화면 키우기처럼 캐릭터는 제일 화면 제일 위에 올라와있고, 빈 공간을 클릭하면 클릭이 뒤로 패스됩니다.</p>
+    </section>
+    
+    <section class="game-details">
+        <h2>개발 배경</h2>
+        <p> 트릭컬 AR을 개발하던 중, 바탕화면 키우기 게임처럼 만들어 보고 싶었습니다.</p>
+    </section>
+
+
+    <button class="button" onclick="location.href='../index.html'">메인 페이지로 돌아가기</button>
+    
+    <script>
+        function scrollScreenshots(direction) {
+            const wrapper = document.querySelector(".screenshot-wrapper");
+            wrapper.scrollBy({ left: direction * 300, behavior: "smooth" });
+        }
+    </script>
+</body>
+</html>
