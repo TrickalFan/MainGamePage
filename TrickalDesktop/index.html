@@ -1,26 +1,39 @@
+</html>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>트릭컬데스크탑</title>
+    <title>트릭컬 키우기</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <header>
-        <h1>트릭컬데스크탑</h1>
-        <!-- <p>이 게임에 대한 소개, 개발 배경 및 기타 정보를 확인하세요.</p> -->
+        <h1>트릭컬 키우기</h1>
     </header>
+ 
+    <section class="play-game">
+        <a href="https://drive.google.com/file/d/1sDRDBewTRpOUtIvP7204dwSI4hwxX4Tp/view?usp=sharing" class="button">최신 버젼 (25.09.29) 다운로드</a>
+    </section>    
+
     <section class="game-screenshots">
         <h2>스크린샷</h2>
         <div class="screenshot-container">
             <button class="prev-button" onclick="scrollScreenshots(-1)">&#10094;</button>
             <div class="screenshot-wrapper">
-                <img src="1.png" class="screenshot" alt="스크린샷 1">
+                <img src="1.png"onclick="openLightbox(0)" class="screenshot" alt="스크린샷 1">
+                <img src="2.png"onclick="openLightbox(1)" class="screenshot" alt="스크린샷 2">
+                <img src="3.png"onclick="openLightbox(2)" class="screenshot" alt="스크린샷 3">
             </div>
             <button class="next-button" onclick="scrollScreenshots(1)">&#10095;</button>
         </div>
     </section>
+    <div class="lightbox" id="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+        <img id="lightbox-img" src="">
+        <span class="next" onclick="changeImage(1)">&#10095;</span>
+    </div>
     <section class="game-info">
         <h2>게임 소개</h2>
         <p>고전 게임 바탕화면 키우기처럼, 트릭컬 캐릭터를 화면에 불러와 상호작용하는 게임입니다.<br>
@@ -29,13 +42,50 @@
     
     <section class="game-details">
         <h2>개발 배경</h2>
-        <p> 트릭컬 AR을 개발하던 중, 바탕화면 키우기 게임처럼 만들어 보고 싶었습니다.</p>
+        <p>트릭컬 AR을 개발하던 중, 바탕화면 키우기 게임처럼 만들어 보고 싶었습니다.</p>
     </section>
 
+    <section class="version-history">
+        <h2>패치 노트</h2>
+        <ul>
+            <li>v25.09.29 - 우로스, 티그(영웅)추가, 음식과 상호작용 추가, 설정 저장 버그 수정 <a href="https://www.youtube.com/watch?v=LOeHLiOzfh4">동영상 보러가기</a></li>
+            <li>v4.4 - 최적화 시도 : Resource 폴더 방법으로 회귀</li>
+            <li>v4.3 - 최적화 시도 : AssetBundle 시도 후 실패 (원인 : 쉬운 업데이트도 동반하기 위해 모든 사도를 번들화 했더니 메모리 사용량이 7GB 까지 오름)</li>
+            <li>v4.2 - 최적화 시도 : Resource 폴더 시도(메모리 사용량을 2.2GB에서 1.3GB까지 낮춤)</li>
+            <li>v4.1 - 최적화 시도 : Addressable 시도 후 실패 (원인 : 그냥 사용법을 모름;)</li>
+            <li>v4 - 나머지 캐릭터들 추가, 꿀밤 쓰다듬기 이펙트 추가 <a href="https://www.youtube.com/watch?v=1HS-oQ4_13U">동영상 보러가기</a></li>
+            <li>v3.1 - 캐릭터 ㄹ 까지 추가, 볼 당기는 위치 수정 <a href="https://www.youtube.com/watch?v=ptSJr6s9vSA">동영상 보러가기</a></li>
+            <li>v3 - 볼 최대 거리 추가, 캐릭터 스폰 메뉴 추가, 이전 세션 자동 저장/불러오기 추가 <a href="https://www.youtube.com/watch?v=YeKqW3xqfok">동영상 보러가기</a></li>
+            <li>v2 - 캐릭터 상호작용 추가, 다양한 AI 추가, 설정창 추가 <a href="https://www.youtube.com/watch?v=v1CxO2XvKY4">동영상 보러가기</a></li>
+            <li>v1 - 에르핀 추가, 플랫폼 추가 <a href="https://www.youtube.com/watch?v=kF-4EZOQn7Q">동영상 보러가기</a> </li>
+    </section>
 
     <button class="button" onclick="location.href='../index.html'">메인 페이지로 돌아가기</button>
     
     <script>
+        // 바꿔야 하는 것들
+        let images = ["1.png", "2.png", "3.png"];
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            document.getElementById("lightbox-img").src = images[currentIndex];
+            document.getElementById("lightbox").style.display = "flex";
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            } else if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            document.getElementById("lightbox-img").src = images[currentIndex];
+        }
         function scrollScreenshots(direction) {
             const wrapper = document.querySelector(".screenshot-wrapper");
             wrapper.scrollBy({ left: direction * 300, behavior: "smooth" });
