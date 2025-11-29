@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키디언 다마고치</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>키디언 다마고치</h1>
+        <!-- <p>이 게임에 대한 소개, 개발 배경 및 기타 정보를 확인하세요.</p> -->
+    </header>
+<!--     
+    <section class="play-game">
+        <a href="https://trickalfan.github.io/JubeeDabee/" class="button">게임 실행</a>
+    </section>     -->
+
+    <section class="game-screenshots">
+        <h2>스크린샷</h2>
+        <div class="screenshot-container">
+            <button class="prev-button" onclick="scrollScreenshots(-1)">&#10094;</button>
+            <div class="screenshot-wrapper">
+                <img src="1.png"onclick="openLightbox(0)" class="screenshot" alt="스크린샷 1">
+                <img src="2.png"onclick="openLightbox(1)" class="screenshot" alt="스크린샷 2">
+            </div>
+            <button class="next-button" onclick="scrollScreenshots(1)">&#10095;</button>
+        </div>
+    </section>
+    <div class="lightbox" id="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+        <img id="lightbox-img" src="">
+        <span class="next" onclick="changeImage(1)">&#10095;</span>
+    </div>
+    <section class="game-info">
+        <h2>프로젝트 소개</h2>
+        <p>트릭컬 키우기를 개발하다가 손맛이 부족해서 다마고치로 만들어 보았습니다.</p>
+    </section>
+    
+    <section class="requirements">
+        <h2>준비물</h2>
+        <p>픽셀 워치 1 (다른 Wear OS가 있는 워치도 가능합니다만 케이스가 픽셀 워치 1에 맞춰져있습니다.)<br>
+        <a href="https://developer.android.com/tools/releases/platform-tools#downloads">Android Debug Bridge </a><br>
+        <a href = "https://drive.google.com/drive/folders/1zoyq9jisu7SEhzIQvpkrQhXyxXWk0eUG?usp=sharing"> 다마고치 APK 파일 </a><br>
+        </p>
+    </section>
+    
+    <section class="install-details">
+        <h2>설치 방법</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/0Fv7Q_tgeCg?si=8Gvev8FW5EF2RJl_&amp;start=56" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+    
+    <section class="copyright">
+        <h2>저작권 정보</h2>
+        <p>캐릭터와 UI 베이스 : Epid Games<br>
+            이미지와 코드들 : 데킬(본인)</p>
+        <p></p>
+    </section>
+    
+
+    <button class="button" onclick="location.href='../index.html'">메인 페이지로 돌아가기</button>
+    
+    <script>
+        // 바꿔야 하는 것들
+        let images = ["1.png","2.png"];
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            document.getElementById("lightbox-img").src = images[currentIndex];
+            document.getElementById("lightbox").style.display = "flex";
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            } else if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            document.getElementById("lightbox-img").src = images[currentIndex];
+        }
+        function scrollScreenshots(direction) {
+            const wrapper = document.querySelector(".screenshot-wrapper");
+            wrapper.scrollBy({ left: direction * 300, behavior: "smooth" });
+        }
+    </script>
+</body>
+</html>
